@@ -6,8 +6,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CharactersService {
 
-  characters:{};
-
   constructor(private http: HttpClient) { }
 
   async getCharacters(): Promise<ICharacter>{

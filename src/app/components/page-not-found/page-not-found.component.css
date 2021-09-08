@@ -1,0 +1,24 @@
+.seccion-vacio {
+    min-height: 90vh;
+    position: relative;
+}
+
+.caja-vacio {
+    text-align: center;
+}
+
+.caja-vacio h6 {
+    font-size: 10rem;
+    font-weight: 700;
+}
+
+.caja-vacio h5 {
+    text-transform: uppercase;
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.caja-vacio p {
+    margin-top: 50px;
+    padding: 0 15%;
+}

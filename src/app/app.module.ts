@@ -10,6 +10,7 @@ import { CharactersComponent } from './components/characters/characters.componen
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { ResultsComponent } from './components/results/results.component';
 import { AboutComponent } from './components/about/about.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AboutComponent } from './components/about/about.component';
     CharactersComponent,
     FooterComponent,
     ResultsComponent,
-    AboutComponent
+    AboutComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
