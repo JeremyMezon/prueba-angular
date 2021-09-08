@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ICharacter, CharactersService } from 'src/app/services/characters.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-results',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultsComponent implements OnInit {
 
-  constructor() { }
+  characters:ICharacter;
 
-  ngOnInit(): void {
+  constructor(private route:ActivatedRoute,private singleCharacter:CharactersService) { }
+
+  async ngOnInit(): Promise<void> {
+    this.route.params.subscribe( async(params) => {
+      this.characters = await this.singleCharacter.getSingleCharacters(params['characterName'])
+    }
+      
+      )
+    
   }
 
 }

@@ -14,6 +14,11 @@ export class CharactersService {
   const { results } = await this.http.get<any>('https://rickandmortyapi.com/api/character').toPromise();
   return results;
   }
+
+  async getSingleCharacters(nameCharacter:string): Promise<ICharacter>{
+    const { results } = await this.http.get<any>(`https://rickandmortyapi.com/api/character/?name=${nameCharacter}`).toPromise();
+    return results;
+  }
 }
 
 export interface ICharacter {
