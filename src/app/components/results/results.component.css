@@ -1,0 +1,38 @@
+.seccion-personajes {
+    position: relative;
+    background-color: #f5f5f5;
+    min-height: 500px;
+    padding: 100px 0;
+}
+
+.caja-personaje {
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 30px 0;
+    background-color: white;
+}
+
+.caja-personaje .imagen {
+    width: 400px;
+}
+
+.caja-personaje .imagen img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.caja-personaje .contenido {
+    padding: 30px;
+    width: 100%;
+}
+
+.caja-personaje .contenido .titulo {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.caja-personaje .contenido .titulo h4 {
+    font-weight: 600;
+}
