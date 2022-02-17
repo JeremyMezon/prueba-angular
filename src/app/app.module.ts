@@ -11,6 +11,9 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { ResultsComponent } from './components/results/results.component';
 import { AboutComponent } from './components/about/about.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { CharacterComponent } from './components/character/character.component';
+import { PaginationCharactersComponent } from './components/pagination-characters/pagination-characters.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -20,12 +23,15 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     FooterComponent,
     ResultsComponent,
     AboutComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CharacterComponent,
+    PaginationCharactersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [
     CharactersService

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CharactersService,ICharacter} from '../../services/characters.service';
-
+import { ResultsComponent } from '../results/results.component';
 @Component({
   selector: 'app-characters',
   templateUrl: './characters.component.html',
@@ -18,6 +18,7 @@ export class CharactersComponent implements OnInit {
       {x:1,y:2,z:3}
     ]
   }
+
 
 
   characters:ICharacter;

@@ -3,13 +3,13 @@
         <div class="row">
             <div class="col-12 col-md-4 centrado-y">
                 <div class="titulo">
-                    <h1>API Angular Test</h1>
+                    <h1>Rick and Morty API</h1>
                 </div>
             </div>
             <div class="col-12 col-md-4">
                 <div class="buscador">
-                    <input class="form-control" type="text" (keyup)="searchCharacter(buscador.value)" #buscador>
-                    <button type="button" class="btn btn-buscar"><i class="fa fa-search"></i></button>
+                    <input class="form-control" type="text" (keyup.enter)="searchCharacter(buscador.value)" #buscador>
+                    <button type="button" (click)="searchCharacter(buscador.value)" class="btn btn-buscar"><i class="fa fa-search"></i></button>
                 </div>
             </div>
             <div class="col-12 col-md-4 centrado justify-content-end">

@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   }
 
   searchCharacter(characterName:string){
-    this.route.navigate(['home',characterName]);
+    this.route.navigate(['characters/',characterName]);
   }
 
 }
