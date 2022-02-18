@@ -1,6 +1,6 @@
 <section class="seccion-personajes">
     <div class="container">
-        <app-character class="row" [characters]="characters" [paginationDataControl]="paginationCharactersData"></app-character>
-        <app-pagination-characters></app-pagination-characters>
+        <app-character class="row" [isByPage]="false" [characters]="characters"></app-character>
+        <pagination-controls (pageChange)="changePagination($event)" ></pagination-controls>
     </div>
 </section>

@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'home', component: CharactersComponent},
   { path: 'about', component: AboutComponent },
   { path: 'characters/:characterName', component: ResultsComponent},
-  { path: 'characters/page/:pageNumber', component: ResultsComponent},
+  { path: 'characters/page/:pageNumber', component: CharactersComponent},
+  { path: 'characters/page/:pageNumber', component: CharactersComponent},
   // { path: '**', redirectTo: 'home'}
   { path: '**', component: PageNotFoundComponent}
 ];
