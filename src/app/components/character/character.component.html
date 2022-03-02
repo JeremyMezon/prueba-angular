@@ -1,23 +1,125 @@
-<div *ngFor="let character of characters " class="col-12 col-lg-6">
-    <div class="caja-personaje">
-        <div class="imagen">
-            <img [src]="character.image" class="img-fluid" alt="">
-        </div>
-        <div class="contenido">
-            <div class="titulo">
-                <h4>{{character.name}}</h4>
-                <span *ngIf="character.status == 'Alive'"><i style="color: green" class="fa fa-circle"></i></span>
-                <span *ngIf="character.status == 'Dead'"><i style="color: red" class="fa fa-circle"></i></span>
-                <span *ngIf="character.status == 'unknown'"><i style="color: rgb(44, 44, 44)" class="fa fa-circle"></i></span>
+
+    <div *ngFor="let character of characters | paginate:paginationDataControl" class="col-12 col-lg-6">
+        <div class="caja-personaje" (click)="getCurrentCharacter(character.id)" data-toggle="modal" data-target="#modalCharacter">
+            <div class="imagen">
+                <img [src]="character.image" class="img-fluid" alt="">
             </div>
-            <div class="location">
-                <small>Last know location:</small><br>
-                <span>{{character.location.name}}</span>
-            </div>
-            <div class="seen">
-                <small>First seen in:</small><br>
-                <span>{{character.origin.name}}</span>
+            <div class="contenido">
+                <div class="titulo">
+                    <h4><a data-toggle="modal" data-target="#modalCharacter" (click)="getCurrentCharacter(character.id)">{{character.name}}</a></h4>
+                    <span *ngIf="character.status == 'Alive'"><i style="color: green" class="fa fa-circle"></i></span>
+                    <span *ngIf="character.status == 'Dead'"><i style="color: red" class="fa fa-circle"></i></span>
+                    <span *ngIf="character.status == 'unknown'"><i style="color: rgb(111, 111, 111)" class="fa fa-circle"></i></span>
+                </div>
+                <div class="location">
+                    <small>Last know location:</small><br>
+                    <span>{{character.location.name}}</span>
+                </div>
+                <div class="seen">
+                    <small>First seen in:</small><br>
+                    <span>{{character.origin.name}}</span>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalCharacter" tabindex="-1" role="dialog" aria-labelledby="character" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container centrado-y">
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="caja-character ">
+                                    <div class="img-character">
+                                        <img [src]="character.image" class="img-fluid" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 centrado-y">
+                                <div class="caja-character">
+                                    <div class="name">
+                                        <h2>{{character.name}}</h2>
+                                        <span *ngIf="character.status == 'Alive'"><i style="color: green" class="fa fa-circle"></i> Alive</span>
+                                        <span *ngIf="character.status == 'Dead'"><i style="color: red" class="fa fa-circle"></i> Dead</span>
+                                        <span *ngIf="character.status == 'unknown'"><i style="color: rgb(111, 111, 111)" class="fa fa-circle"></i> Unknown</span>
+                                    </div>
+                                    <div class="details">
+                                        <p>
+                                            This living being is origin from 
+                                            <span *ngIf="character.origin.name == 'unknown'; else somewhere">Nowhere </span>
+                                            <ng-template #somewhere>{{character.origin.name}}</ng-template>
+                                            is from <span>{{character.species}}</span> species and the last know location is 
+                                            <span>{{character.location.name}}</span>.
+                                        </p>
+                                        <p class="text-episodes">
+                                            Featured episodes: <span>{{character.episode.length}}</span> 
+                                        </p>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+<!-- <ng-template #charactersTemplate> [routerLink]="['/character',character.id]"
+    <div *ngFor="let character of characters" class="col-12 col-lg-6">
+        <div class="caja-personaje">
+            <div class="imagen">
+                <img [src]="character.image" class="img-fluid" alt="">
+            </div>
+            <div class="contenido">
+                <div class="titulo">
+                    <h4>{{character.name}}</h4>
+                    <span *ngIf="character.status == 'Alive'"><i style="color: green" class="fa fa-circle"></i></span>
+                    <span *ngIf="character.status == 'Dead'"><i style="color: red" class="fa fa-circle"></i></span>
+                    <span *ngIf="character.status == 'unknown'"><i style="color: rgb(44, 44, 44)" class="fa fa-circle"></i></span>
+                </div>
+                <div class="location">
+                    <small>Last know location:</small><br>
+                    <span>{{character.location.name}}</span>
+                </div>
+                <div class="seen">
+                    <small>First seen in:</small><br>
+                    <span>{{character.origin.name}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template> -->
+<!-- <ng-template #charactersTemplate>
+    <div *ngFor="let character of characters | paginate:paginationDataControl || null" class="col-12 col-lg-6">
+        <div class="caja-personaje">
+            <div class="imagen">
+                <img [src]="character.image" class="img-fluid" alt="">
+            </div>
+            <div class="contenido">
+                <div class="titulo">
+                    <h4>{{character.name}}</h4>
+                    <span *ngIf="character.status == 'Alive'"><i style="color: green" class="fa fa-circle"></i></span>
+                    <span *ngIf="character.status == 'Dead'"><i style="color: red" class="fa fa-circle"></i></span>
+                    <span *ngIf="character.status == 'unknown'"><i style="color: rgb(44, 44, 44)" class="fa fa-circle"></i></span>
+                </div>
+                <div class="location">
+                    <small>Last know location:</small><br>
+                    <span>{{character.location.name}}</span>
+                </div>
+                <div class="seen">
+                    <small>First seen in:</small><br>
+                    <span>{{character.origin.name}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template> -->
+

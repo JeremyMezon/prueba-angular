@@ -1,0 +1,132 @@
+.seccion-slider {
+    position: relative;
+    height: 750px;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.estrecho{
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 0 2000px #00000037;
+}
+
+.centrado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centrado-y{
+    display: flex;
+    align-items: center;
+}
+
+.bg{
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+}
+
+.bg-rick{
+    background-image: url(../../../assets/rick-face.png);
+    background-size: 600px;
+    background-position-x: 90%;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.caja-slider {
+    text-align: center;
+}
+
+.caja-slider h2 {
+    font-size: 78px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 600;
+}
+
+.caja-slider p {
+    font-size: 14px;
+    padding: 0 20%;
+}
+
+.seccion-who{
+    position: relative;
+    padding: 100px 0;
+    z-index: 10;
+}
+
+.seccion-who .caja-about h3{
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.seccion-who .caja-about p{
+    font-size: 21px;
+    line-height: 1.8em;
+    font-weight: 300;
+    margin-bottom: 15px;
+}
+
+.seccion-totales{
+    padding: 100px 0;
+    background-color: #333333;
+}
+
+.caja-contador{
+    text-align: center;
+}
+
+.caja-contador span{
+    display: inline-block;
+    margin-bottom: 0px;
+    font-size: 46px;
+    color: yellow;
+    font-weight: 600;
+    line-height: 1.4em;
+}
+
+.caja-contador h5{
+    color: white;
+    font-size: 32px;
+    font-weight: 300;
+}
+
+.seccion-api{
+    padding: 100px 0;
+}
+
+.caja-api-title{
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.caja-api-title img{
+    max-width: 40px;
+}
+
+.caja-api-title h3{
+    margin-left: 15px;
+    font-size: 42px;
+    font-weight: 600;
+}
+
+.caja-api p{
+    font-size: 21px;
+    font-weight: 300;
+}
+
+.api-text{
+    display: inline-block;
+    font-size: 21px;
+    margin: 25px auto;
+    padding: 7px 10px;
+    border-radius: 3px;
+    font-weight: 500;
+    background-color: rgba(255, 255, 167, 0.66);
+    color: #333333;
+}

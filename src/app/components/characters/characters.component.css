@@ -2,24 +2,7 @@ app-character{
     width: 100%;
 }
 
-.seccion-slider {
-    min-height: 600px;
-    position: relative;
-}
 
-.caja-slider {
-    text-align: center;
-}
-
-.caja-slider h2 {
-    font-size: 64px;
-    text-transform: uppercase;
-}
-
-.caja-slider p {
-    font-size: 14px;
-    padding: 0 20%;
-}
 
 .seccion-personajes {
     position: relative;
@@ -59,3 +42,13 @@ app-character{
 .caja-personaje .contenido .titulo h4 {
     font-weight: 600;
 }
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.pagination /deep/ .ngx-pagination {
+    padding-left: 0px;
+  }

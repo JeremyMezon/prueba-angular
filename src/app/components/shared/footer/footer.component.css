@@ -1,0 +1,29 @@
+footer{
+    padding: 20px 0;
+    background-color: #151515;
+
+}
+
+.caja-footer h2{
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+
+.caja-footer h2, .caja-footer small{
+    color: rgba(255, 255, 255, 0.94);
+}
+
+.caja-footer small{
+    font-weight: 300;
+}
+
+.caja-footer p{
+    font-weight: 200;
+}
+
+.caja-footer p, .caja-footer a{
+    margin-bottom: 0px;
+    color: rgba(255, 255, 255, 0.872);
+    text-decoration: none;
+    font-size: 14px;
+}

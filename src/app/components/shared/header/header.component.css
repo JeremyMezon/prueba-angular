@@ -28,6 +28,12 @@ header {
     letter-spacing: 5px;
 }
 
+.caja-header .menu ul li a:hover {
+    text-decoration: none;
+    transition-duration: .5s;
+    color: yellow;
+}
+
 .buscador {
     display: flex;
 }

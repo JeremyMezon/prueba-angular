@@ -12,8 +12,11 @@ import { ResultsComponent } from './components/results/results.component';
 import { AboutComponent } from './components/about/about.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { CharacterComponent } from './components/character/character.component';
-import { PaginationCharactersComponent } from './components/pagination-characters/pagination-characters.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { HomeComponent } from './pages/home/home.component';
+import { CharacterDetailsComponent } from './components/character-details/character-details.component';
+import {NgxParallaxModule}  from '@yoozly/ngx-parallax';
+import { ButtonComponent } from './components/shared/button/button.component'; 
 
 @NgModule({
   declarations: [
@@ -25,13 +28,16 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AboutComponent,
     PageNotFoundComponent,
     CharacterComponent,
-    PaginationCharactersComponent
+    HomeComponent,
+    CharacterDetailsComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxParallaxModule
   ],
   providers: [
     CharactersService

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +8,22 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private route:Router) { }
+  constructor(
+    private router:Router,
+    private route:ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
   }
 
   searchCharacter(characterName:string){
-    this.route.navigate(['characters/',characterName]);
+    this.router.navigate(['characters',characterName]);
+    // this.router.navigate(['/characters'],{
+    //   queryParams: {
+    //     Page: 1,
+    //     Name: characterName
+    //   },
+    // });
   }
 
 }

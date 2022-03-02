@@ -1,0 +1,3 @@
+<a [ngClass]="buttonClass || 'defaultButton'" *ngIf="isLink" [routerLink]="link">{{textButton}}</a>
+<button [ngClass]="buttonClass || 'defaultButton'" *ngIf="!isLink">{{textButton}}</button>
+

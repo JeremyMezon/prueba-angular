@@ -18,9 +18,9 @@ export class CharactersService {
     return results;
   }
 
-  async getTotalPages(): Promise<number>{
+  async getTotalItems(): Promise<number>{
     const { info } = await this.http.get<any>(`https://rickandmortyapi.com/api/character`).toPromise();
-    return info.pages;
+    return info.count;
   }
 
   async getInfo(): Promise<IDataInfoCharacter>{
@@ -28,25 +28,51 @@ export class CharactersService {
     return info;
   }
 
+  async getInfoByPage(pageNumber:number): Promise<IDataInfoCharacter>{
+    const { info } = await this.http.get<any>(`https://rickandmortyapi.com/api/character?page=${pageNumber}`).toPromise();
+    return info;
+  }
+
   async getSingleCharacters(nameCharacter:string): Promise<ICharacter>{
     const { results } = await this.http.get<any>(`https://rickandmortyapi.com/api/character/?name=${nameCharacter}`).toPromise();
     return results;
+  }
+
+  async getSingleCharacter(idCharacter:number): Promise<ICharacter>{
+    const character:any = await this.http.get<any>(`https://rickandmortyapi.com/api/character/${idCharacter}`).toPromise();
+    return character;
+  }
+
+  async getSingleCharactersByPage(nameCharacter:string,pageCharacter:number): Promise<ICharacter>{
+    const { results } = await this.http.get<any>(`https://rickandmortyapi.com/api/character/?page=${pageCharacter}&name=${nameCharacter}`).toPromise();
+    return results;
+  }
+
+  async getSingleInfoCharacters(nameCharacter:string): Promise<IDataInfoCharacter>{
+    const { info } = await this.http.get<any>(`https://rickandmortyapi.com/api/character/?name=${nameCharacter}`).toPromise();
+    return info;
   }
 }
 
 export interface ICharacter {
   id:number,
   name:string,
-  image:string,
-  status:string,
+  image:string, //
+  status:string, //
   species:string,
   gender:string,
-  origin:string,
-  location:string
+  origin:{
+    name: string,
+    url: string
+  },
+  location:{
+    name: string,
+    url: string
+  },
+  episode?: []
 }
 
 export interface IPaginationCharacter{
-  id: string,
   itemsPerPage: number,
   currentPage: number,
   totalItems: number

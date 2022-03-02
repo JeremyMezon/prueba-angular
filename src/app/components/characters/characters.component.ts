@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {CharactersService,ICharacter} from '../../services/characters.service';
+import { Component, OnInit,OnChanges } from '@angular/core';
+import {CharactersService,ICharacter,IDataInfoCharacter, IPaginationCharacter} from '../../services/characters.service';
 import { ResultsComponent } from '../results/results.component';
+import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
 @Component({
   selector: 'app-characters',
   templateUrl: './characters.component.html',
@@ -8,29 +9,48 @@ import { ResultsComponent } from '../results/results.component';
 })
 export class CharactersComponent implements OnInit {
 
-  // Objeto de prueba para desestructurar
-  listaAlgo = {
-    palabras: [
-      "Hola","Camisa","Verde"
-    ],
-    numeros: [5,85,40],
-    otros: [
-      {x:1,y:2,z:3}
-    ]
-  }
-
-
-
   characters:ICharacter;
-  constructor(private charactersService:CharactersService) { }
+  dataInfo: IDataInfoCharacter;
+  dataPagesCharacters: IPaginationCharacter;
+  currentPage: number;
+  characterName: string;
+  constructor(
+    private route:ActivatedRoute,
+    private charactersService:CharactersService,
+    private router:Router
+  ) { }
 
   async ngOnInit(): Promise<void> {
+    this.currentPage = 1;
+    this.dataPagesCharacters = {
+      itemsPerPage: 20,
+      currentPage: this.currentPage,
+      totalItems: await this.charactersService.getTotalItems()
+    }
     this.characters = await this.charactersService.getCharacters();
-    console.log(this.characters);
+    
+    this.route.params.subscribe(async params =>{
+      if(params['characterName']){
+        this.currentPage = 1;
+        this.characterName = params["characterName"];
+        this.dataPagesCharacters = {
+          itemsPerPage: 20,
+          currentPage: this.currentPage,
+          totalItems:  (await this.charactersService.getSingleInfoCharacters(this.characterName)).count
+        }
+        this.characters = await this.charactersService.getSingleCharactersByPage(this.characterName,this.currentPage);
+      }
+    })
+  }
 
-    // La Desestructuracion
-    const {palabras,numeros} = this.listaAlgo;
-    console.log(palabras,numeros);
+  async changePagination(page): Promise<void>{
+    this.dataPagesCharacters.currentPage = page;
+    if(this.characterName){
+      this.characters = await this.charactersService.getSingleCharactersByPage(this.characterName,page)
+    }
+    else{
+      this.characters = await this.charactersService.getCharactersByPage(page);
+    }
   }
 
 }

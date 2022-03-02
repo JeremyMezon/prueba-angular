@@ -1,15 +1,10 @@
-<section class="seccion-slider centrado">
-    <div class="container">
-        <div class="caja-slider">
-            <h2>The Rick and Morty API</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat nisi nihil dignissimos necessitatibus, velit mollitia explicabo impedit alias magni perspiciatis nam blanditiis provident.</p>
-        </div>
-    </div>
-</section>
+
 
 <section class="seccion-personajes">
     <div class="container">
-        <app-character class="row" [characters]="characters" ></app-character>
-        <app-pagination-characters></app-pagination-characters>
+        <app-character class="row" [characters]="characters" [paginationDataControl]="dataPagesCharacters" ></app-character>
+        <div class="pagination">
+            <pagination-controls (pageChange)="changePagination($event)" ></pagination-controls>
+        </div>
     </div>
 </section>

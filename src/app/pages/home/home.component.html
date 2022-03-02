@@ -1,0 +1,75 @@
+<section class="seccion-slider">
+    <div class="bg estrecho centrado"  ngx-parallax style="background-image: url(../../../assets/dimension.jpg);">
+        <div class="container">
+            <div class="caja-slider">
+                <h2>The Rick and Morty API</h2>
+                <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat nisi nihil dignissimos necessitatibus, velit mollitia explicabo impedit alias magni perspiciatis nam blanditiis provident.</p> -->
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+<section class="seccion-who">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-5 centrado">
+                <img src="../../../assets/transportation-Rick-and-Morty.png" class="img-fluid" alt="">
+            </div>
+            <div class="col-12 col-md-6 centrado-y">
+                <div class="caja-about">
+                    <h3>Where are we Rick?</h3>
+                    <p>
+                        Don't you see it Morty? this is the rick and morty api where you can see all the 
+                        characters of our TV show in a simple way and without wasting much time.
+                    </p>
+                    <app-button [isLink]="true" [textButton]="'See characters'" [link]="['/characters']"></app-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="seccion-totales">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="caja-contador">
+                    <span>{{totalCharacters}}</span>
+                    <h5>Characters</h5>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="caja-contador">
+                    <span>{{totalEpisodes}}</span>
+                    <h5>Episodes</h5>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="caja-contador">
+                    <span>{{totalLocations}}</span>
+                    <h5>Locations</h5>
+                </div> 
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="seccion-api bg-rick">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="caja-api">
+                    <div class="caja-api-title">
+                        <img src="../../../assets/morty.png" class="img-fluid" alt="">
+                        <h3>But Rick, How are we supposed to use this?</h3>
+                    </div>
+                    <p>
+                        Ohhh morty very easy!, we just have to consume the <b>API base url</b> below and that's it.
+                    </p>
+                    <a href="https://rickandmortyapi.com/api" target="_blank"><span class="api-text">https://rickandmortyapi.com/api</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
