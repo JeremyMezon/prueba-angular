@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CharactersService, ICharacter } from 'src/app/services/characters.service';
+import { ICharacter } from 'src/app/interfaces/character.interface';
+import { CharactersService } from 'src/app/services/characters.service';
 
 @Component({
   selector: 'app-character-details',
@@ -18,7 +19,7 @@ export class CharacterDetailsComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     let Id = this.route.snapshot.params.characterID;
-    this.character = await this.characterService.getSingleCharacter(Id);
+    this.character = await this.characterService.getSingleCharacter(Id,'character');
 
     // this.route.params.subscribe(async params=>{
     //   this.character = await this.characterService.getSingleCharacter(params['characterID'])

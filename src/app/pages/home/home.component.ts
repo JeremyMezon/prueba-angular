@@ -1,8 +1,6 @@
 import { Component, OnInit,AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { IParallaxScrollConfig } from 'ngx-parallax-scroll';
 import { CharactersService } from 'src/app/services/characters.service';
-import { EpisodesService } from 'src/app/services/episodes.service';
-import { LocationsService } from 'src/app/services/locations.service';
 
 @Component({
   selector: 'app-home',
@@ -17,15 +15,13 @@ export class HomeComponent implements OnInit,AfterViewInit {
   images : any;
 
   constructor(
-    private episodesService:EpisodesService,
-    private characterService:CharactersService,
-    private locationService:LocationsService,
+    private characterService:CharactersService
   ){ }
 
   async ngOnInit(): Promise<void> {
-    this.totalCharacters = await this.characterService.getTotalItems();
-    this.totalEpisodes = await this.episodesService.getTotalItems();
-    this.totalLocations = await this.locationService.getTotalItems();
+    this.totalCharacters = await this.characterService.getTotalItems('character');
+    this.totalEpisodes = await this.characterService.getTotalItems('episode');
+    this.totalLocations = await this.characterService.getTotalItems('location');
   }
 
   ngAfterViewInit(){

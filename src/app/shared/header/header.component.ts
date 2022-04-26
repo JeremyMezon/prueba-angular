@@ -18,12 +18,6 @@ export class HeaderComponent implements OnInit {
 
   searchCharacter(characterName:string){
     this.router.navigate(['characters',characterName]);
-    // this.router.navigate(['/characters'],{
-    //   queryParams: {
-    //     Page: 1,
-    //     Name: characterName
-    //   },
-    // });
   }
 
 }

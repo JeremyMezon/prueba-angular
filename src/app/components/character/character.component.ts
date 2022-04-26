@@ -1,15 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CharactersService,ICharacter,IPaginationCharacter } from '../../services/characters.service'
+import { ICharacter } from 'src/app/interfaces/character.interface';
+import { IPagination } from 'src/app/interfaces/pagination.interface';
+import { CharactersService } from '../../services/characters.service'
 
 @Component({
   selector: 'app-character',
   templateUrl: './character.component.html',
-  styleUrls: ['./character.component.css','../characters/characters.component.css']
+  styleUrls: ['./character.component.css','../../pages/characters/characters.component.css']
 })
 export class CharacterComponent implements OnInit {
 
   @Input() characters:ICharacter;
-  @Input() paginationDataControl:IPaginationCharacter;
+  @Input() paginationDataControl:IPagination;
   // @Input() isByPage: boolean;
   pagesToShow: number;
   currentP:number;
@@ -45,7 +47,7 @@ export class CharacterComponent implements OnInit {
   }
 
   async getCurrentCharacter(currentCharacter:number){
-    this.character = await this.characterService.getSingleCharacter(currentCharacter);
+    this.character = await this.characterService.getSingleCharacter(currentCharacter,'character');
   }
 
 }

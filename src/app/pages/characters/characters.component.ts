@@ -1,7 +1,8 @@
 import { Component, OnInit,OnChanges } from '@angular/core';
-import {CharactersService,ICharacter,IDataInfoCharacter, IPaginationCharacter} from '../../services/characters.service';
-import { ResultsComponent } from '../results/results.component';
+import {CharactersService} from '../../services/characters.service';
+import {ICharacter,IEpisode,IDataInfo} from '../../interfaces/character.interface';
 import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
+import { IPagination } from 'src/app/interfaces/pagination.interface';
 @Component({
   selector: 'app-characters',
   templateUrl: './characters.component.html',
@@ -10,8 +11,8 @@ import { ActivatedRoute, Router, RouterEvent } from '@angular/router';
 export class CharactersComponent implements OnInit {
 
   characters:ICharacter;
-  dataInfo: IDataInfoCharacter;
-  dataPagesCharacters: IPaginationCharacter;
+  dataInfo: IDataInfo;
+  dataPagesCharacters: IPagination;
   currentPage: number;
   characterName: string;
   constructor(
@@ -25,9 +26,9 @@ export class CharactersComponent implements OnInit {
     this.dataPagesCharacters = {
       itemsPerPage: 20,
       currentPage: this.currentPage,
-      totalItems: await this.charactersService.getTotalItems()
+      totalItems: await this.charactersService.getTotalItems('character')
     }
-    this.characters = await this.charactersService.getCharacters();
+    this.characters = await this.charactersService.getCharacters('character');
     
     this.route.params.subscribe(async params =>{
       if(params['characterName']){
@@ -36,9 +37,9 @@ export class CharactersComponent implements OnInit {
         this.dataPagesCharacters = {
           itemsPerPage: 20,
           currentPage: this.currentPage,
-          totalItems:  (await this.charactersService.getSingleInfoCharacters(this.characterName)).count
+          totalItems:  (await this.charactersService.getSingleInfoCharacters(this.characterName,'character')).count
         }
-        this.characters = await this.charactersService.getSingleCharactersByPage(this.characterName,this.currentPage);
+        this.characters = await this.charactersService.getSingleCharactersByPage(this.characterName,this.currentPage,'character');
       }
     })
   }
@@ -46,10 +47,10 @@ export class CharactersComponent implements OnInit {
   async changePagination(page): Promise<void>{
     this.dataPagesCharacters.currentPage = page;
     if(this.characterName){
-      this.characters = await this.charactersService.getSingleCharactersByPage(this.characterName,page)
+      this.characters = await this.charactersService.getSingleCharactersByPage(this.characterName,page,'character')
     }
     else{
-      this.characters = await this.charactersService.getCharactersByPage(page);
+      this.characters = await this.charactersService.getCharactersByPage(page,'character');
     }
   }
 

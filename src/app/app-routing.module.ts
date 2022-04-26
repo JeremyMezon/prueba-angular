@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CharactersComponent } from './components/characters/characters.component';
+import { CharactersComponent } from './pages/characters/characters.component';
 import { AboutComponent } from './pages/about/about.component';
-import { ResultsComponent } from './components/results/results.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+//import { ResultsComponent } from './components/results/results.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CharacterDetailsComponent } from './components/character-details/character-details.component';
 
